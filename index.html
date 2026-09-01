@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Horizon Resort & Spa - Ultra Luxury Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .hero-section {
+            height: 85vh;
+            background: linear-gradient(180deg, rgba(10, 25, 24, 0.4) 0%, rgba(10, 25, 24, 0.85) 100%),
+                        url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            color: #FFF !important;
+            font-size: 3.8rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            color: var(--gold-bright) !important;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        /* แถบจองด่วน Quick Search Bar */
+        .quick-booking-bar {
+            max-width: 1100px;
+            margin: -50px auto 60px;
+            background: #FFFFFF;
+            border: 1px solid var(--line-gold);
+            border-radius: 8px;
+            padding: 24px 30px;
+            box-shadow: 0 15px 35px rgba(10, 25, 24, 0.15);
+            position: relative;
+            z-index: 100;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) 160px;
+            gap: 20px;
+            align-items: end;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #CBD5E0;
+            border-radius: 4px;
+            font-family: 'Prompt', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--gold-bright);
+        }
+
+        /* Features Box */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #FFF;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border-color: var(--gold-bright);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gold-bright);
+            color: #FFF;
+            padding: 10px 22px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            border-radius: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: var(--gold-bright);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Bar -->
+    <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>           
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+	    <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero Banner -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="page-subtitle" style="color: var(--gold-bright) !important;">Welcome To Perfection</span>
+            <h1>Grand Horizon Resort & Spa</h1>
+            <p>สัมผัสประสบการณ์การพักผ่อนริมชายหาดระดับ 6 ดาว</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="rooms.html" class="btn-gold"><i class="fa-solid fa-bed"></i> เลือกชมห้องพัก</a>
+                <a href="gallery.html" class="btn-outline"><i class="fa-solid fa-images"></i> ชมแกลเลอรีภาพ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Booking Bar -->
+    <div class="quick-booking-bar">
+        <form class="booking-form" onsubmit="event.preventDefault(); alert('ระบบกำลังค้นหาห้องพักว่างตามเงื่อนไขของคุณ...');">
+            <div class="form-group">
+                <label><i class="fa-solid fa-calendar-check"></i> วันเข้าพัก (Check-in)</label>
+                <input type="date" required value="2026-08-01">
+            </div>
+            <div class="form-group">
+                <label><i class="fa-solid fa-calendar-xmark"></i> วันออก (Check-out)</label>
+                <input type="date" required value="2026-08-03">
+            </div>
+            <div class="form-group">
+                <label><i class="fa-solid fa-users"></i> ผู้เข้าพัก</label>
+                <select>
+                    <option>2 ผู้ใหญ่ (1 ห้อง)</option>
+                    <option>2 ผู้ใหญ่ + 1 เด็ก</option>
+                    <option>4 ผู้ใหญ่ (Family)</option>
+                    <option>กลุ่มใหญ่ (มากกว่า 6 ท่าน)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><i class="fa-solid fa-layer-group"></i> ประเภทห้อง</label>
+                <select>
+                    <option>ทุกประเภทห้องพัก</option>
+                    <option>Ocean View Suite</option>
+                    <option>Private Pool Villa</option>
+                    <option>Penthouse Residence</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-gold" style="height: 42px; border: none; cursor: pointer; width: 100%;">
+                <i class="fa-solid fa-magnifying-glass"></i> ค้นหาห้อง
+            </button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <main class="wrap" style="padding-top: 10px;">
+        
+        <!-- Welcome Section -->
+        <div style="text-align: center; margin-bottom: 60px;">
+            <span class="page-subtitle">Sanctuary of Peace</span>
+            <h2 class="page-title">นิยามใหม่ของการพักผ่อนเหนือระดับ</h2>
+            <p class="page-desc">
+                หลีกหนีความวุ่นวายมาผ่อนคลายในวิลล่าส่วนตัวท่ามกลางธรรมชาติอันงดงาม เพียบพร้อมด้วยบริการระดับพรีเมียม อาหารเลิศรส และการดูแลอย่างอบอุ่นตลอด 24 ชั่วโมง
+            </p>
+        </div>
+
+        <!-- Highlight Grid Services (เชื่อมลิงก์ใหม่เรียบร้อย) -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-water-ladder"></i></div>
+                <h3>Infinity Ocean Pool</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">สระว่ายน้ำระบบเกลือขนาดใหญ่ไร้ขอบ ให้คุณว่ายน้ำพร้อมชมวิวพระอาทิตย์ตกดิน</p>
+                <a href="gallery.html" style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 12px; display: inline-block;">ดูภาพเพิ่มเติม &rarr;</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-utensils"></i></div>
+                <h3>Michelin Dining</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">อิ่มอร่อยกับอาหารซีฟู้ดสดใหม่และเมนูฟิวชันจากเชฟระดับมิชลินสตาร์</p>
+                <a href="facilities.html#dining" style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 12px; display: inline-block;">ชมรายละเอียด & เมนู &rarr;</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-spa"></i></div>
+                <h3>Horizon Serenity Spa</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">ฟื้นฟูร่างกายและจิตใจด้วยทรีตเมนต์สปานวดสมุนไพรสูตรเฉพาะของรีสอร์ท</p>
+                <a href="facilities.html#spa" style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 12px; display: inline-block;">แพ็กเกจสปา &rarr;</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="fff.mp3" type="audio/mpeg">
+        <source src="fff.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

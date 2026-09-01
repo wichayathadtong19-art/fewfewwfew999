@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จองห้องพัก - Grand Horizon Resort Pattaya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        @media (max-width: 992px) {
+            .booking-container { grid-template-columns: 1fr; }
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--ink, #0E2430);
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--line, #DDD);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .summary-card {
+            position: sticky;
+            top: 100px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--line, #DDD);
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--driftwood, #666);
+        }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--coral, #E2622F);
+            border-top: 1px solid var(--line, #DDD);
+            padding-top: 16px;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="bar">
+            <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+            <nav class="nav-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="rooms.html">ห้องพัก</a>
+                <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+                <a href="dining.html">ห้องอาหาร</a>
+                <a href="creator.html" class="">ผู้จัดทำ</a>
+                <a href="gallery.html">แกลเลอรี</a>
+                <a href="reviews.html">รีวิว</a>
+                <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+                <a href="admin.html">หลังบ้าน</a>
+		<a href="faq.html">ปัญหาที่พบบ่อย</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap" style="padding: 60px 24px; max-width: 1200px; margin: 0 auto;">
+        <h1 style="font-size: 2.2rem; color: var(--ink, #0E2430);">ยืนยันการจองห้องพัก</h1>
+        <p style="color: var(--driftwood, #666);">กรอกข้อมูลเพื่อดำเนินการจองห้องพักและรับสิทธิประโยชน์สูงสุด</p>
+
+        <div class="booking-container">
+            <div>
+                <form id="bookingForm" class="card card-pad" style="background:#fff; border-radius:16px; padding: 24px; border: 1px solid #ddd;">
+                    <h3 style="margin-bottom: 20px; color: var(--ink, #0E2430); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">1. รายละเอียดการเข้าพัก</h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-calendar-day"></i> วันเช็คอิน</label>
+                            <input type="date" id="checkIn" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-calendar-check"></i> วันเช็คเอาท์</label>
+                            <input type="date" id="checkOut" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-bed"></i> เลือกประเภทห้องพัก</label>
+                            <!-- แก้ไข: เอา selected ออกจาก 5000 แล้วให้ 300/500 ทำงานตรงตามจริง -->
+                            <select id="roomType" class="form-control">
+    <option value="500" data-name="Premier Oceanfront Suite">Premier Oceanfront Suite (฿500 / คืน)</option>
+    <option value="600" data-name="Garden Plunge Pool Villa">Garden Plunge Pool Villa (฿600 / คืน)</option>
+    <option value="600" data-name="Ocean Horizon Pool Suite">Ocean Horizon Pool Suite (฿600 / คืน)</option>
+    <option value="700" data-name="Deluxe Garden Sanctuary">Deluxe Garden Sanctuary (฿700 / คืน)</option>
+    <option value="700" data-name="Grand Ocean Deluxe">Grand Ocean Deluxe (฿700 / คืน)</option>
+    <option value="850" data-name="Grand Family Garden Suite">Grand Family Garden Suite (฿850 / คืน)</option>
+    <option value="1000" data-name="Wellness Sanctuary Spa Villa">Wellness Sanctuary Spa Villa (฿1,000 / คืน)</option>
+    <option value="1200" data-name="Royal Beachfront Pool Villa">Royal Beachfront Pool Villa (฿1,200 / คืน)</option>
+    <option value="1400" data-name="Horizon Presidential Penthouse">Horizon Presidential Penthouse (฿1,400 / คืน)</option>
+    <option value="1500" data-name="Sunset Lagoon Pool Villa">Sunset Lagoon Pool Villa (฿1,500 / คืน)</option>
+    <option value="1500" data-name="Ocean Duplex Family Suite">Ocean Duplex Family Suite (฿1,500 / คืน)</option>
+    <option value="1500" data-name="Honeymoon Ocean Residence">Honeymoon Ocean Residence (฿1,500 / คืน)</option>
+</select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-user-group"></i> จำนวนผู้เข้าพัก</label>
+                            <select id="guests" class="form-control">
+                                <option value="1">1 ท่าน</option>
+                                <option value="2" selected>2 ท่าน</option>
+                                <option value="3">3 ท่าน</option>
+                                <option value="4">4 ท่าน</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 30px 0 20px; color: var(--ink, #0E2430); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">2. บริการเสริมพิเศษ</h3>
+                    
+                    <div class="form-group">
+                        <label><input type="checkbox" id="optBreakfast" value="169"> รับบุฟเฟต์อาหารเช้า (+฿169 / ท่าน / วัน)</label>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="optAirport" value="150"> บริการรถรับ-ส่ง (+฿150)</label>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="optSpa" value="200"> แพ็กเกจนวดสปา (+฿200)</label>
+                    </div>
+
+                    <h3 style="margin: 30px 0 20px; color: var(--ink, #0E2430); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">3. ข้อมูลผู้ติดต่อ</h3>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="form-group">
+                            <label>ชื่อ-นามสกุล</label>
+                            <input type="text" class="form-control" placeholder="สมชาย ใจดี" required>
+                        </div>
+                        <div class="form-group">
+                            <label>เบอร์โทรศัพท์</label>
+                            <input type="tel" class="form-control" placeholder="081-234-5678" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>อีเมล</label>
+                        <input type="email" class="form-control" placeholder="somchai@example.com" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-coral" style="width: 100%; padding: 16px; font-size: 1.1rem; border-radius: 8px; margin-top: 20px; background: #E2622F; color: #fff; border: none; cursor: pointer;">
+                        <i class="fa-solid fa-lock"></i> ยืนยันและชำระเงิน
+                    </button>
+                </form>
+            </div>
+
+            <!-- Summary Sidebar -->
+            <div>
+                <div class="summary-card">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--ink, #0E2430);">สรุปรายละเอียด</h3>
+                    
+                    <div class="summary-row">
+                        <span>จำนวนคืนที่พัก:</span>
+                        <span id="sumNights">1 คืน</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>ค่าห้องพัก:</span>
+                        <span id="sumRoomPrice">฿0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>บริการเสริม:</span>
+                        <span id="sumExtras">฿0</span>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>ยอดรวมทั้งสิ้น:</span>
+                        <span id="sumTotal">฿0</span>
+                    </div>
+
+                    <div style="margin-top: 20px; background: rgba(27,110,106,0.08); padding: 12px; border-radius: 8px; font-size: 0.85rem; color: #1B6E6A;">
+                        <i class="fa-solid fa-shield-halved"></i> ราคาสุทธิรวมภาษีแล้ว ไม่มีค่าบริการแอบแฝง
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const checkInInput = document.getElementById('checkIn');
+        const checkOutInput = document.getElementById('checkOut');
+        const roomTypeSelect = document.getElementById('roomType');
+        const guestsSelect = document.getElementById('guests');
+        const optBreakfast = document.getElementById('optBreakfast');
+        const optAirport = document.getElementById('optAirport');
+        const optSpa = document.getElementById('optSpa');
+
+        let calculatedGrandTotal = 0;
+        let selectedRoomName = '';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // รับชื่อห้องและราคาจากหน้า rooms.html
+            const urlParams = new URLSearchParams(window.location.search);
+            const priceParam = urlParams.get('price');
+            const roomParam = urlParams.get('room');
+
+            if (priceParam && roomParam) {
+                let found = false;
+
+                for (let i = 0; i < roomTypeSelect.options.length; i++) {
+                    const option = roomTypeSelect.options[i];
+
+                    if (
+                        option.value === priceParam &&
+                        option.getAttribute('data-name') === roomParam
+                    ) {
+                        roomTypeSelect.selectedIndex = i;
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    const newOption = document.createElement('option');
+                    newOption.value = priceParam;
+                    newOption.setAttribute('data-name', roomParam);
+                    newOption.text =
+                        `${roomParam} (฿${Number(priceParam).toLocaleString()} / คืน)`;
+
+                    roomTypeSelect.appendChild(newOption);
+                    roomTypeSelect.selectedIndex =
+                        roomTypeSelect.options.length - 1;
+                }
+            }
+
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            checkInInput.value = today.toISOString().split('T')[0];
+            checkOutInput.value = tomorrow.toISOString().split('T')[0];
+
+            calculateTotal();
+        });
+
+        function calculateTotal() {
+            const start = new Date(checkInInput.value);
+            const end = new Date(checkOutInput.value);
+            
+            let nights = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+            if (nights <= 0 || isNaN(nights)) nights = 1;
+
+            // ดึงราคาจาก option ที่ถูกเลือกอยู่จริงๆ
+            const roomRate = parseFloat(roomTypeSelect.value) || 0;
+            const numGuests = parseInt(guestsSelect.value) || 1;
+            const selectedOption = roomTypeSelect.options[roomTypeSelect.selectedIndex];
+            selectedRoomName = selectedOption.getAttribute('data-name') || selectedOption.text;
+            
+            let roomTotal = roomRate * nights;
+            let extrasTotal = 0;
+
+            if (optBreakfast && optBreakfast.checked) extrasTotal += (parseFloat(optBreakfast.value) * numGuests * nights);
+            if (optAirport && optAirport.checked) extrasTotal += parseFloat(optAirport.value);
+            if (optSpa && optSpa.checked) extrasTotal += parseFloat(optSpa.value);
+
+            calculatedGrandTotal = roomTotal + extrasTotal;
+
+            // อัปเดตข้อความบน UI ให้ตรงตามจริง
+            document.getElementById('sumNights').innerText = `${nights} คืน`;
+            document.getElementById('sumRoomPrice').innerText = `฿${roomTotal.toLocaleString()}`;
+            document.getElementById('sumExtras').innerText = `฿${extrasTotal.toLocaleString()}`;
+            document.getElementById('sumTotal').innerText = `฿${calculatedGrandTotal.toLocaleString()}`;
+        }
+
+        // ผูก Event ให้คำนวณใหม่ทุกครั้งที่มีการเปลี่ยนค่าในหน้าเว็บ
+        [checkInInput, checkOutInput, roomTypeSelect, guestsSelect, optBreakfast, optAirport, optSpa].forEach(element => {
+            if(element) element.addEventListener('change', calculateTotal);
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const targetUrl = `payment.html?room=${encodeURIComponent(selectedRoomName)}&price=${calculatedGrandTotal}`;
+            window.location.href = targetUrl;
+        });
+    </script>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

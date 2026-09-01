@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Suites & Villas - Grand Horizon Resort & Spa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Luxury Dark Theme Palette */
+        :root {
+            --dark-bg: #090E11;
+            --card-dark: #121A1F;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-gold-sub: #A8956A;
+            --line-subtle: rgba(212, 175, 55, 0.2);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #E2E8F0;
+        }
+
+        /* Hero Header with Parallax Feel */
+        .hero-banner {
+            background: linear-gradient(180deg, rgba(9,14,17,0.4) 0%, rgba(9,14,17,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover attachment fixed;
+            padding: 120px 24px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--line-subtle);
+        }
+
+        .hero-banner h1 {
+            font-size: 3.8rem;
+            color: var(--gold-primary);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .hero-banner p {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Control Panel (Search Bar & Filter Tabs) */
+        .controls-wrapper {
+            max-width: 1280px;
+            margin: -30px auto 40px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box-wrap {
+            background: rgba(18, 26, 31, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--line-subtle);
+            padding: 20px 30px;
+            border-radius: 4px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .search-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--line-subtle);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--gold-primary);
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: #A0AEC0;
+            border: 1px solid var(--line-subtle);
+            padding: 10px 22px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            color: var(--gold-primary);
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Mega Rooms Grid (12 Items) */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 36px;
+        }
+
+        .room-card {
+            background: var(--card-dark);
+            border: 1px solid var(--line-subtle);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .room-card.hide { display: none; }
+
+        .room-img-wrapper {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .room-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .room-card:hover .room-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(9, 14, 17, 0.85);
+            border: 1px solid var(--line-subtle);
+            color: var(--gold-light);
+            padding: 5px 14px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .room-content {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .room-title {
+            font-size: 1.6rem;
+            color: var(--gold-primary);
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .room-features {
+            display: flex;
+            gap: 16px;
+            color: var(--text-gold-sub);
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--line-subtle);
+            padding-bottom: 14px;
+        }
+
+        .room-desc {
+            color: #A0AEC0;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .room-action-row {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #FFF;
+        }
+
+        .price-tag span {
+            font-size: 0.75rem;
+            color: var(--text-gold-sub);
+            font-weight: 300;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
+            color: #000;
+            font-weight: 600;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-gold:hover {
+            background: #FFF;
+            box-shadow: 0 0 15px #FFF;
+        }
+
+        .btn-detail {
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+            padding: 9px 16px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-right: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-detail:hover {
+            background: rgba(212,175,55,0.1);
+        }
+
+        /* Modal Quick Detail View */
+        .modal-overlay {
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .modal-card {
+            background: var(--card-dark);
+            border: 1px solid var(--gold-primary);
+            max-width: 700px;
+            width: 100%;
+            padding: 32px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(212,175,55,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px; right: 20px;
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+	    <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <h1>Sanctuary of High Luxury</h1>
+        <p>12 รูปแบบคอลเลกชันห้องพักและพูลวิลล่าระดับมาสเตอร์พีซ</p>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <div class="controls-wrapper">
+        <div class="search-box-wrap">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อห้องพักหรือคีย์เวิร์ด...">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">ทั้งหมด (12)</button>
+                <button class="filter-btn" data-filter="garden">วิวสวน</button>
+                <button class="filter-btn" data-filter="sea">วิวทะเล</button>
+                <button class="filter-btn" data-filter="pool">มีสระส่วนตัว</button>
+                <button class="filter-btn" data-filter="family">ครอบครัว</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid Display (12 Rooms) -->
+    <main class="wrap" style="padding: 0 24px 100px;">
+        <div class="rooms-grid" id="roomsList">
+
+            <!-- 1. Deluxe Garden View -->
+            <div class="room-card" data-category="garden" data-title="Deluxe Garden Sanctuary">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Garden Collection</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Deluxe Garden Sanctuary</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 45 ตร.ม.</span>
+                        <span><i class="fa-solid fa-user"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">ห้องพักวิวสวนเขตร้อนอันสงบเงียบ ออกแบบผสมผสานไม้ธรรมชาติพร้อมระเบียงพักผ่อนส่วนตัว</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿700 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Deluxe Garden Sanctuary', 'สัมผัสการพักผ่อนท่ามกลางธรรมชาติด้วยสวนป่าเขตร้อนส่วนตัว เตียงขนาด King Size ผ้าปูเตียงผ้าฝ้ายอียิปต์ 800 เส้น พร้อมห้องน้ำหินอ่อนแยกโซนเปียกแห้ง', '฿1,000')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Deluxe Ocean View -->
+            <div class="room-card" data-category="sea" data-title="Grand Ocean Deluxe">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Ocean Collection</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Grand Ocean Deluxe</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 52 ตร.ม.</span>
+                        <span><i class="fa-solid fa-user"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">ดื่มด่ำกับทัศนียภาพเส้นขอบฟ้าและท้องทะเลอ่าวพัทยาแบบเต็มตาจากกระจกใสบานใหญ่</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿700 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Grand Ocean Deluxe', 'รับชมวิวทะเล 180 องศา พร้อมระเบียงกว้างพิเศษ อ่างอาบน้ำหินอ่อนตั้งพื้น และระบบเครื่องเสียง Bose Sound System', '฿700')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Ocean Front Suite -->
+            <div class="room-card" data-category="sea" data-title="Premier Oceanfront Suite">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Signature Ocean</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Premier Oceanfront Suite</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 70 ตร.ม.</span>
+                        <span><i class="fa-solid fa-user"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">ห้องสวีตหัวมุมชั้นสูง ติดชายหาด มอบความสมบูรณ์แบบด้วยห้องนั่งเล่นแยกเป็นสัดส่วน</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿500 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Premier Oceanfront Suite', 'สวีตสุดหรูเห็นวิวทะเลติดหน้าหาด มาพร้อมมินิบาร์พรีเมียมฟรี และสิทธิ์เข้าใช้บริการ Horizon Executive Lounge', '฿500')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Garden Plunge Pool Villa -->
+            <div class="room-card" data-category="pool garden" data-title="Garden Plunge Pool Villa">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Private Pool</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Garden Plunge Pool Villa</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 90 ตร.ม.</span>
+                        <span><i class="fa-solid fa-user"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">วิลล่าส่วนตัวพร้อมสระพูลส่วนตัวกลางพฤกษชาติ ให้ความเป็นส่วนตัวระดับสูงสุดสำหรับคู่รัก</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿600 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Garden Plunge Pool Villa', 'สระส่วนตัวระบบเกลือกลางสวนพฤกษชาติ ศาลานั่งพักผ่อนกลางแจ้ง อ่างจากุซซี่ และฝักบัว Rain Shower กลางแจ้ง', '฿600')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Ocean Pool Suite -->
+            <div class="room-card" data-category="pool sea" data-title="Ocean Horizon Pool Suite">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Pool + Ocean</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Ocean Horizon Pool Suite</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 110 ตร.ม.</span>
+                        <span><i class="fa-solid fa-user"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">แช่น้ำในสระส่วนตัวบนชั้นสูง พร้อมจิบแชมเปญชมวิวพระอาทิตย์ตกดินเหนือท้องทะเล</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿600 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Ocean Horizon Pool Suite', 'สระว่ายน้ำส่วนตัวไร้ขอบบนระเบียงห้องพัก วิวทะเล 180 องศา บริการอาหารเช้า Floating Breakfast ส่งตรงถึงสระ', '฿600')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Two-Bedroom Family Suite -->
+            <div class="room-card" data-category="family garden" data-title="Grand Family Garden Suite">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Family Collection</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Grand Family Garden Suite</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 120 ตร.ม.</span>
+                        <span><i class="fa-solid fa-users"></i> 4 ท่าน</span>
+                    </div>
+                    <p class="room-desc">สวีต 2 ห้องนอนสำหรับครอบครัว พื้นที่นั่งเล่นกว้างขวาง เชื่อมต่อตรงสู่สนามหญ้ารีสอร์ท</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿850 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Grand Family Garden Suite', '2 ห้องนอน 2 ห้องน้ำ ห้องนั่งเล่นขนาดใหญ่ เครื่องเกมคอนโซลสำหรับเด็ก และพื้นที่รับประทานอาหาร', '฿850')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Royal Beachfront Villa -->
+            <div class="room-card" data-category="pool sea family" data-title="Royal Beachfront Pool Villa">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Ultimate Villa</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Royal Beachfront Pool Villa</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 220 ตร.ม.</span>
+                        <span><i class="fa-solid fa-users"></i> 4 ท่าน</span>
+                    </div>
+                    <p class="room-desc">วิลล่าไฮไลต์ระดับท็อป ก้าวเท้าสู่ชายหาดส่วนตัวได้ทันที พร้อมสระว่ายน้ำส่วนตัวขนาดยาว 12 เมตร</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿1,200 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Royal Beachfront Pool Villa', 'วิลล่าริมชายหาดอันดับหนึ่ง บริการ Butler ส่วนตัว 24 ชม., สระว่ายน้ำใหญ่ส่วนตัว, รถรับส่งสนามบินลีมูซีนฟรี', '฿1,200')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Penthouse Ocean Suite -->
+            <div class="room-card" data-category="sea pool" data-title="Horizon Presidential Penthouse">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Penthouse</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Horizon Presidential Penthouse</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 300 ตร.ม.</span>
+                        <span><i class="fa-solid fa-users"></i> 6 ท่าน</span>
+                    </div>
+                    <p class="room-desc">เพนต์เฮาส์ชั้นสูงสุด พาโนรามาวิวทะเลพัทยา พร้อมดาดฟ้าส่วนตัวและสระจากุซซี่กลางแจ้ง</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿1,400 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Horizon Presidential Penthouse', 'เพนต์เฮาส์หรูหราที่สุด 3 ห้องนอน, ลิฟต์ส่วนตัว, บาร์เครื่องดื่มส่วนตัว, พ่อครัวประกอบอาหารส่วนตัวภายในห้อง', '฿1,400')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Wellness Spa Villa -->
+            <div class="room-card" data-category="garden pool" data-title="Wellness Sanctuary Spa Villa">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Wellness Special</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Wellness Sanctuary Spa Villa</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 105 ตร.ม.</span>
+                        <span><i class="fa-solid fa-user"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">วิลล่าเน้นการผ่อนคลายจิตใจ มีห้องนวดสปาส่วนตัวและห้องซาวน่าหินเกลือหิมาลายันในตัว</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿1,000 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Wellness Sanctuary Spa Villa', 'รวมทรีตเมนต์สปาฟรีทุกวันที่เข้าพัก, เตียงนวดส่วนตัวในวิลล่า, ห้องสตรีมและซาวน่าส่วนตัว', '฿1,000')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Sunset Lagoon Villa -->
+            <div class="room-card" data-category="pool garden" data-title="Sunset Lagoon Pool Villa">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Lagoon View</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Sunset Lagoon Pool Villa</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 115 ตร.ม.</span>
+                        <span><i class="fa-solid fa-user"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">ตั้งอยู่ริมทะเลสาบลากูนอันเงียบสงบ พร้อมชานระเบียงยื่นลงน้ำและสระว่ายน้ำส่วนตัว</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿1,500 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Sunset Lagoon Pool Villa', 'สัมผัสบรรยากาศความงามของลากูน, เรือคายัคส่วนตัวสำหรับพายในลากูน, ชานระเบียงอาบแดดส่วนตัว', '฿1,500')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. Ocean Family Duplex -->
+            <div class="room-card" data-category="family sea" data-title="Ocean Duplex Family Suite">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Duplex Loft</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Ocean Duplex Family Suite</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 135 ตร.ม.</span>
+                        <span><i class="fa-solid fa-users"></i> 4 ท่าน</span>
+                    </div>
+                    <p class="room-desc">สวีต 2 ชั้นสไตล์ดูเพล็กซ์ เพดานสูงโปร่ง พร้อมกระจกใสเต็มผนังมองเห็นวิวทะเลทั้ง 2 ชั้น</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿1,500 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Ocean Duplex Family Suite', 'ดีไซน์ 2 ชั้นสไตล์ลอฟต์ลักชัวรี, ชั้นบนเตียง Master King, ชั้นล่างโซฟาเบดและโซนรับแขกวิวทะเล', '฿1,500')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. Honeymoon Pool Residence -->
+            <div class="room-card" data-category="pool sea" data-title="Honeymoon Ocean Residence">
+                <div class="room-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80">
+                    <span class="room-badge">Honeymoon Special</span>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Honeymoon Ocean Residence</h3>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-expand"></i> 150 ตร.ม.</span>
+                        <span><i class="fa-solid fa-heart"></i> 2 ท่าน</span>
+                    </div>
+                    <p class="room-desc">เรสซิเดนซ์สุดโรแมนติกสำหรับคู่รัก ตกแต่งพิเศษพร้อมอ่างอาบน้ำกุหลาบและมินิไวน์เซ็ทต้อนรับ</p>
+                    <div class="room-action-row">
+                        <div class="price-tag">฿1,500 <span>/ คืน</span></div>
+                        <div>
+                            <button class="btn-detail" onclick="openModal('Honeymoon Ocean Residence', 'จัดตกแต่งห้องสไตล์ฮันนีมูนฟรี, แชมเปญต้อนรับ 1 ขวด, คอร์สนวดคู่รักฟรี 60 นาที ที่ศูนย์สปา', '฿1,500')">รายละเอียด</button>
+                            <a href="booking.html" class="btn-gold">จองห้อง</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Popup for Room Details -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="color: var(--gold-primary); font-size: 2rem; margin-bottom: 12px;">Room Name</h2>
+            <p id="modalDesc" style="color: #CBD5E0; line-height: 1.8; margin-bottom: 24px;">Room Detail...</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line-subtle); padding-top: 20px;">
+                <span id="modalPrice" style="font-size: 1.8rem; font-weight: 700; color: #fff;">฿0</span>
+                <a href="#" id="modalBookingBtn" class="btn-gold">จองห้องพักนี้ทันที</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Script -->
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const roomCards = document.querySelectorAll('.room-card');
+        const searchInput = document.getElementById('searchInput');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterRooms();
+            });
+        });
+
+        searchInput.addEventListener('keyup', filterRooms);
+
+        function filterRooms() {
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            const searchText = searchInput.value.toLowerCase();
+
+            roomCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const title = card.getAttribute('data-title').toLowerCase();
+
+                const matchesFilter = (activeFilter === 'all' || category.includes(activeFilter));
+                const matchesSearch = title.includes(searchText);
+
+                if (matchesFilter && matchesSearch) {
+                    card.classList.remove('hide');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+        }
+
+        // ส่งชื่อห้องและราคาจริงไปหน้า booking.html
+        document.querySelectorAll('.room-card a.btn-gold').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const card = this.closest('.room-card');
+                const roomName = card.getAttribute('data-title');
+                const priceText = card.querySelector('.price-tag').innerText;
+
+                // เช่น ฿1,200 / คืน -> 1200
+                const price = priceText.replace(/[^\d]/g, '');
+
+                window.location.href =
+                    'booking.html?room=' +
+                    encodeURIComponent(roomName) +
+                    '&price=' +
+                    price;
+            });
+        });
+
+        function openModal(title, desc, price) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalPrice').innerText = price + ' / คืน';
+
+            const cleanPrice = price.replace(/[^\d]/g, '');
+
+            document.getElementById('modalBookingBtn').href =
+                'booking.html?room=' +
+                encodeURIComponent(title) +
+                '&price=' +
+                cleanPrice;
+
+            document.getElementById('detailModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+    </script>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+
+</body>
+</html>

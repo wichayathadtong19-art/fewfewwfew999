@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ห้องอาหารและบาร์ - Grand Horizon Resort Pattaya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dining-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 768px) { .dining-card { grid-template-columns: 1fr; } }
+        .dining-img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+    </style>
+</head>
+<body>
+   <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+	    <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+
+    <section style="background: linear-gradient(rgba(14,36,48,0.7), rgba(14,36,48,0.85)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover; padding: 100px 24px; text-align: center; color: #fff;">
+        <h1 style="font-size: 3rem;">ประสบการณ์แห่งรสชาติริมทะเล</h1>
+        <p style="margin-top: 12px; color: rgba(255,255,255,0.85);">ลิ้มลองอาหารไทยและนานาชาติ คัดสรรวัตถุดิบสดใหม่พร้อมวิวพระอาทิตย์ตกดิน</p>
+    </section>
+
+    <main class="wrap" style="padding: 80px 24px;">
+        <!-- Dining Item 1 -->
+        <div class="dining-card">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Horizon Beach Dining" class="dining-img">
+            <div style="padding: 36px; display: flex; flex-direction: column; justify-content: center;">
+                <span style="color: var(--coral); font-weight: 600; font-size: 0.9rem;">FINE DINING & SEAFOOD</span>
+                <h2 style="font-size: 1.8rem; margin-top: 6px; color: var(--ink);">Horizon Beach Restaurant</h2>
+                <p style="color: var(--driftwood); margin-top: 12px; line-height: 1.7;">
+                    ห้องอาหารหลักริมหาด บริการอาหารทะเลสดใหม่ อาหารไทยรสจัดจ้าน และเมนูอินเตอร์เนชั่นแนล ท่ามกลางบรรยากาศรับลมทะเล 180 องศา
+                </p>
+                <div style="margin-top: 18px; font-size: 0.9rem; color: var(--ink);">
+                    <p><i class="fa-regular fa-clock" style="color:var(--teal);"></i> <strong>เปิดบริการ:</strong> 06:30 น. - 23:00 น.</p>
+                </div>
+                <button onclick="alert('ระบบบันทึกคิวจองโต๊ะเรียบร้อยแล้ว เจ้าหน้าที่จะติดต่อกลับครับ')" class="btn btn-coral" style="margin-top: 24px; width: fit-content;">
+                    <i class="fa-solid fa-utensils"></i> สำรองโต๊ะล่วงหน้า
+                </button>
+            </div>
+        </div>
+
+        <!-- Dining Item 2 -->
+        <div class="dining-card">
+            <div style="padding: 36px; display: flex; flex-direction: column; justify-content: center; order: 1;">
+                <span style="color: var(--teal); font-weight: 600; font-size: 0.9rem;">COCKTAIL & SUNSET BAR</span>
+                <h2 style="font-size: 1.8rem; margin-top: 6px; color: var(--ink);">The Sunset Lounge & Bar</h2>
+                <p style="color: var(--driftwood); margin-top: 12px; line-height: 1.7;">
+                    บาร์สุดหรูติดสระว่ายน้ำอินฟินิตี้ จิบไวน์ชั้นเยี่ยมหรือค็อกเทลสูตรพิเศษ รังสรรค์โดยมิกโซโลจิสต์ระดับรางวัล
+                </p>
+                <div style="margin-top: 18px; font-size: 0.9rem; color: var(--ink);">
+                    <p><i class="fa-regular fa-clock" style="color:var(--teal);"></i> <strong>เปิดบริการ:</strong> 16:00 น. - 01:00 น.</p>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Sunset Lounge" class="dining-img" style="order: 2;">
+        </div>
+    </main>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

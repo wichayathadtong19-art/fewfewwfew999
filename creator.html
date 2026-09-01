@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้จัดทำ - Grand Horizon Resort</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="bar">
+            <a href="index.html" class="brand">
+                <span class="dot"></span>GRAND HORIZON
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="rooms.html">ห้องพัก</a>
+                <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+                <a href="dining.html">ห้องอาหาร</a>
+		<a href="creator.html" class="">ผู้จัดทำ</a>
+                <a href="gallery.html">แกลเลอรี</a>
+                <a href="reviews.html">รีวิว</a>
+                <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+		<a href="admin.html">หลังบ้าน</a>
+		<a href="faq.html">ปัญหาที่พบบ่อย</a>
+            </nav>
+        </div>
+    </header>
+
+    <main style="
+        min-height: calc(100vh - 120px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 24px;
+    ">
+        <div style="
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid var(--line-gold, #D4AF37);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                width: 140px;
+                height: 140px;
+                margin: 0 auto 24px;
+                border-radius: 50%;
+                border: 4px solid var(--accent-gold, #D4AF37);
+                overflow: hidden;
+                background: #f5f5f5;
+            ">
+                <img src="ดดด.jpg" alt="รูปผู้จัดทำ" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <h2 style="color: var(--primary-navy, #0B192C); font-size: 1.5rem; margin-bottom: 8px;">
+                นาย วิชญะ ธาตุทอง
+            </h2>
+
+            <p style="color: var(--accent-gold, #D4AF37); font-weight: 500; font-size: 1.1rem; margin-bottom: 20px;">
+                รหัสนักศึกษา: 68219090020
+            </p>
+
+            <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 20px;">
+
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+                
+                <div style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: #fdfbf7;
+                    padding: 10px 20px;
+                    border-radius: 50px;
+                    border: 1px solid rgba(212, 175, 55, 0.3);
+                    color: var(--primary-navy, #0B192C);
+                    font-weight: 500;
+                    width: 100%;
+                    max-width: 280px;
+                    justify-content: center;
+                ">
+                    <i class="fa-solid fa-phone" style="color: var(--accent-gold, #D4AF37);"></i>
+                    <a href="tel:0828537938" style="text-decoration: none; color: inherit;">082-853-7938</a>
+                </div>
+
+                <div style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: #fdfbf7;
+                    padding: 10px 20px;
+                    border-radius: 50px;
+                    border: 1px solid rgba(212, 175, 55, 0.3);
+                    color: var(--primary-navy, #0B192C);
+                    font-weight: 500;
+                    width: 100%;
+                    max-width: 280px;
+                    justify-content: center;
+                ">
+                    <i class="fa-solid fa-envelope" style="color: var(--accent-gold, #D4AF37);"></i>
+                    <a href="mailto:your.email@example.com" style="text-decoration: none; color: inherit;">wichayathadtong19@gmail.com</a>
+                </div>
+
+                <div style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: #fdfbf7;
+                    padding: 10px 20px;
+                    border-radius: 50px;
+                    border: 1px solid rgba(212, 175, 55, 0.3);
+                    color: var(--primary-navy, #0B192C);
+                    font-weight: 500;
+                    width: 100%;
+                    max-width: 280px;
+                    justify-content: center;
+                ">
+                    <i class="fa-brands fa-line" style="color: #06C755; font-size: 1.2rem;"></i>
+                    <a href="https://line.me/ti/p/~your_line_id" target="_blank" style="text-decoration: none; color: inherit;">@feww19</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

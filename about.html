@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกี่ยวกับเรา - Grand Horizon Resort Pattaya</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome สำหรับไอคอนตกแต่ง -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS ตกแต่งพิเศษสำหรับหน้า About เพิ่มเติม -->
+    <style>
+        /* Decorative Background Patterns */
+        .bg-pattern {
+            background-image: radial-gradient(rgba(27, 110, 106, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Hover Card Lift Effect */
+        .lift-card {
+            transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s ease;
+        }
+        .lift-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(14, 36, 48, 0.12) !important;
+        }
+
+        /* Timeline Glowing Dot */
+        .timeline-dot {
+            position: relative;
+        }
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--coral, #E2622F);
+            box-shadow: 0 0 0 4px rgba(226, 98, 47, 0.2);
+        }
+
+        /* Image Overlay Zoom */
+        .img-zoom-container {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+        .img-zoom-container img {
+            transition: transform 0.6s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Custom Badge Tag */
+        .tag-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            background: rgba(226, 98, 47, 0.12);
+            color: var(--coral, #E2622F);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+	    <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+    <style>@media (max-width:900px){#desktopAdminBtn{display:none;}}</style>
+
+    <!-- Luxury Hero Banner Section -->
+    <section style="position:relative; min-height:65vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(14,36,48,0.75) 0%, rgba(14,36,48,0.88) 100%), url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; text-align:center; color:#fff; padding:100px 24px 80px;">
+        <div class="wrap-narrow" style="position:relative; z-index:2;">
+            <div class="tag-badge" style="background:rgba(255,255,255,0.15); color:#fff; border:1px solid rgba(255,255,255,0.3); margin-bottom:16px;">
+                <i class="fa-solid fa-crown" style="color:#FFD700;"></i> ต้อนรับสู่ความสมบูรณ์แบบริมชายหาด
+            </div>
+            <h1 style="font-size:clamp(2.4rem, 5vw, 4rem); font-weight:800; color:#fff; line-height:1.25; letter-spacing:-0.5px;">
+                เรื่องราว นิยาม และตัวตนของ <br><span style="color:#F2A97B; background:linear-gradient(90deg, #F2A97B, #E2622F); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Grand Horizon Resort</span>
+            </h1>
+            <p style="color:rgba(245,239,227,0.92); font-size:1.1rem; line-height:1.85; margin-top:20px; max-width:720px; margin-left:auto; margin-right:auto; font-weight:300;">
+                สัมผัสสวรรค์แห่งการพักผ่อนระดับ 5 ดาวริมหาดพัทยา ที่ซึ่งเส้นขอบฟ้ามาบรรจบกับความหรูหรา และการบริการด้วยหัวใจอบอุ่นสไตล์ไทย
+            </p>
+            
+            <div style="margin-top:32px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                <a href="#about-story" class="btn btn-coral" style="padding:14px 32px; border-radius:30px;"><i class="fa-solid fa-compass"></i> สำรวจเรื่องราวของเรา</a>
+                <a href="rooms.html" class="btn" style="padding:14px 32px; border-radius:30px; background:rgba(255,255,255,0.15); color:#fff; border:1px solid rgba(255,255,255,0.3);"><i class="fa-solid fa-key"></i> ชมห้องพักสุดพิเศษ</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="horizon" aria-hidden="true">
+        <svg viewBox="0 0 1180 56" preserveAspectRatio="none">
+            <line x1="0" y1="28" x2="1180" y2="28" stroke="#1B6E6A" stroke-width="1" opacity="0.35"/>
+        </svg>
+        <span class="glow"></span>
+    </div>
+
+    <!-- Section 1: Main Story & Highlight Cards -->
+    <section id="about-story" class="wrap bg-pattern" style="padding:80px 24px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:56px; align-items:center;">
+            <div class="reveal">
+                <span class="tag-badge"><i class="fa-solid fa-star"></i> ประสบการณ์กว่า 15 ปี</span>
+                <h2 style="font-size:2.2rem; margin-top:14px; line-height:1.3; color:var(--ink);">สัมผัสความสุนทรีย์ แห่งการพักผ่อนที่แท้จริง</h2>
+                <p style="color:var(--driftwood); line-height:1.9; margin-top:18px; font-size:1rem;">
+                    ก่อตั้งขึ้นในปี 2010 <strong>Grand Horizon Resort Pattaya</strong> ถูกออกแบบขึ้นด้วยความตั้งใจที่จะสร้างพื้นที่พักผ่อนริมทะเลที่ดีที่สุดในพัทยา ผสมผสานสถาปัตยกรรมสไตล์ Modern Tropical เข้ากับธรรมชาติรอบตัวอย่างแนบเนียน
+                </p>
+                <p style="color:var(--driftwood); line-height:1.9; margin-top:14px; font-size:1rem;">
+                    ทุกตารางเมตรของเรารังสรรค์ขึ้นเพื่อตอบโจทย์ความต้องการของแขกผู้เข้าพัก ไม่ว่าจะเป็นหาดส่วนตัวอันสงบเงียบ สระว่ายน้ำอินฟินิตี้วิวพาโนรามา ตลอดจนอาหารรสเลิศและบริการสปาฟื้นฟูสุขภาพ
+                </p>
+
+                <!-- Feature Grid Mini -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px;">
+                    <div class="card card-pad" style="background:#fff; border-left:4px solid var(--teal); padding:16px;">
+                        <h4 style="font-size:1rem; color:var(--ink);"><i class="fa-solid fa-water" style="color:var(--teal);"></i> วิวทะเล 180°</h4>
+                        <p style="font-size:0.85rem; color:var(--driftwood); margin-top:4px;">รับชมพระอาทิตย์ตกดินจากระเบียงห้องพัก</p>
+                    </div>
+                    <div class="card card-pad" style="background:#fff; border-left:4px solid var(--coral); padding:16px;">
+                        <h4 style="font-size:1rem; color:var(--ink);"><i class="fa-solid fa-concierge-bell" style="color:var(--coral);"></i> บริการ 24 ชั่วโมง</h4>
+                        <p style="font-size:0.85rem; color:var(--driftwood); margin-top:4px;">ดูแลดั่งสมาชิกคนสำคัญในครอบครัว</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Double Image Showcase with Overlay Glass Card -->
+            <div class="reveal" style="position:relative;">
+                <div class="img-zoom-container" style="box-shadow:0 20px 40px rgba(0,0,0,0.15);">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=80" style="width:100%; height:460px; object-fit:cover;" alt="Grand Horizon Overview">
+                </div>
+                
+                <!-- Floating Glass Card Badge -->
+                <div class="glass-card" style="position:absolute; bottom:-25px; left:-25px; padding:20px; border-radius:16px; max-width:260px;">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:var(--coral); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.3rem;">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <p style="font-size:1.8rem; font-weight:800; color:var(--ink); line-height:1;">4.9 / 5.0</p>
+                            <p style="font-size:0.8rem; color:var(--driftwood); margin-top:4px;">การันตีด้วยคะแนนรีวิวจากแขกทั่วโลก</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Numbers & Stat Counters Showcase -->
+    <section style="background:linear-gradient(135deg, var(--ink, #0E2430) 0%, #153545 100%); color:#fff; padding:70px 24px; position:relative; overflow:hidden;">
+        <div class="wrap">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:32px; text-align:center;">
+                <div class="reveal lift-card card-pad" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px;">
+                    <i class="fa-solid fa-calendar-check" style="font-size:2.2rem; color:var(--coral); margin-bottom:12px;"></i>
+                    <p class="mono" style="font-size:2.8rem; font-weight:800; color:#fff; line-height:1;">15+</p>
+                    <p style="color:rgba(245,239,227,0.75); font-size:0.9rem; margin-top:8px;">ปีแห่งประสบการณ์และการต้อนรับ</p>
+                </div>
+                <div class="reveal lift-card card-pad" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px;">
+                    <i class="fa-solid fa-hotel" style="font-size:2.2rem; color:var(--teal); margin-bottom:12px;"></i>
+                    <p class="mono" style="font-size:2.8rem; font-weight:800; color:#fff; line-height:1;">120</p>
+                    <p style="color:rgba(245,239,227,0.75); font-size:0.9rem; margin-top:8px;">ห้องพักและพูลวิลล่าหรู</p>
+                </div>
+                <div class="reveal lift-card card-pad" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px;">
+                    <i class="fa-solid fa-smile-beam" style="font-size:2.2rem; color:#FFD700; margin-bottom:12px;"></i>
+                    <p class="mono" style="font-size:2.8rem; font-weight:800; color:#fff; line-height:1;">99%</p>
+                    <p style="color:rgba(245,239,227,0.75); font-size:0.9rem; margin-top:8px;">แขกประทับใจและอยากกลับมาอีก</p>
+                </div>
+                <div class="reveal lift-card card-pad" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px;">
+                    <i class="fa-solid fa-users" style="font-size:2.2rem; color:var(--coral); margin-bottom:12px;"></i>
+                    <p class="mono" style="font-size:2.8rem; font-weight:800; color:#fff; line-height:1;">450k+</p>
+                    <p style="color:rgba(245,239,227,0.75); font-size:0.9rem; margin-top:8px;">แขกที่เคยต้อนรับตลอดการเปิดบริการ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Vision & Mission (วิสัยทัศน์และพันธกิจ) -->
+    <section class="wrap" style="padding:90px 24px;">
+        <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+            <span class="tag-badge"><i class="fa-solid fa-bullseye"></i> เข็มทิศองค์กร</span>
+            <h2 class="reveal" style="font-size:2.2rem; margin-top:10px;">วิสัยทัศน์ และ พันธกิจของเรา</h2>
+            <p class="reveal" style="color:var(--driftwood); margin-top:10px; font-size:0.98rem;">มุ่งสู่การเป็นรีสอร์ทอันดับหนึ่งในใจนักท่องเที่ยว ด้วยมาตรฐานสูงสุดในทุกมิติ</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px;">
+            <div class="card card-pad lift-card reveal" style="background:#fff; border-top:5px solid var(--teal); border-radius:16px;">
+                <div style="font-size:2rem; color:var(--teal); margin-bottom:16px;"><i class="fa-solid fa-eye"></i></div>
+                <h3 style="font-size:1.4rem; color:var(--ink);">วิสัยทัศน์ (Vision)</h3>
+                <p style="color:var(--driftwood); font-size:0.95rem; margin-top:12px; line-height:1.75;">
+                    ก้าวสู่การเป็นผู้นำด้าน Luxury Beachfront Resort ในประเทศไทย ที่เป็นเลิศด้านนวัตกรรมบริการ ความสะอาด และความยั่งยืนต่อสิ่งแวดล้อมอย่างแท้จริง
+                </p>
+            </div>
+
+            <div class="card card-pad lift-card reveal" style="background:#fff; border-top:5px solid var(--coral); border-radius:16px;">
+                <div style="font-size:2rem; color:var(--coral); margin-bottom:16px;"><i class="fa-solid fa-heart-pulse"></i></div>
+                <h3 style="font-size:1.4rem; color:var(--ink);">พันธกิจ (Mission)</h3>
+                <p style="color:var(--driftwood); font-size:0.95rem; margin-top:12px; line-height:1.75;">
+                    มอบประสบการณ์การพักผ่อนระดับพรีเมียมที่เกินความคาดหมายของแขก รังสรรค์เมนูอาหารสดใหม่ และรักษาสภาพแวดล้อมชายหาดพัทยาให้งดงามยั่งยืนสืบไป
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Core Values (4 เสาหลักการบริการ) -->
+    <section style="background:var(--sand, #F5EFE3); padding:80px 24px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+        <div class="wrap">
+            <div style="text-align:center; max-width:640px; margin:0 auto 48px;">
+                <span class="tag-badge"><i class="fa-solid fa-gem"></i> ปรัชญาการทำงาน</span>
+                <h2 class="reveal" style="font-size:2.1rem; margin-top:10px;">หัวใจสำคัญในการบริการ (Core Values)</h2>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:24px;">
+                <div class="card lift-card card-pad reveal" style="background:#fff; border-radius:16px;">
+                    <div style="width:54px; height:54px; border-radius:14px; background:rgba(27,110,106,0.12); color:var(--teal); display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:18px;">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 style="font-size:1.2rem; color:var(--ink);">ใส่ใจในทุกรายละเอียด</h3>
+                    <p style="color:var(--driftwood); font-size:0.9rem; margin-top:8px; line-height:1.65;">
+                        ตั้งแต่ความสะอาดในห้องพัก กลิ่นหอมอโรมาผ่อนคลาย ไปจนถึงเมนูอาหารที่ปรับตามความต้องการของแขก
+                    </p>
+                </div>
+
+                <div class="card lift-card card-pad reveal" style="background:#fff; border-radius:16px;">
+                    <div style="width:54px; height:54px; border-radius:14px; background:rgba(226,98,47,0.12); color:var(--coral); display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:18px;">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+                    <h3 style="font-size:1.2rem; color:var(--ink);">ความต้อนรับแบบไทย</h3>
+                    <p style="color:var(--driftwood); font-size:0.9rem; margin-top:8px; line-height:1.65;">
+                        รอยยิ้ม ความจริงใจ และการดูแลระดับห้าดาวที่ทำให้คุณรู้สึกสบายใจเหมือนอยู่บ้านหลังที่สอง
+                    </p>
+                </div>
+
+                <div class="card lift-card card-pad reveal" style="background:#fff; border-radius:16px;">
+                    <div style="width:54px; height:54px; border-radius:14px; background:rgba(27,110,106,0.12); color:var(--teal); display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:18px;">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 style="font-size:1.2rem; color:var(--ink);">ใส่ใจสิ่งแวดล้อม</h3>
+                    <p style="color:var(--driftwood); font-size:0.9rem; margin-top:8px; line-height:1.65;">
+                        บริหารจัดการทรัพยากรด้วยพลังงานสะอาด ลดการใช้พลาสติกเดี่ยวเพื่ออนุรักษ์ทะเลพัทยา
+                    </p>
+                </div>
+
+                <div class="card lift-card card-pad reveal" style="background:#fff; border-radius:16px;">
+                    <div style="width:54px; height:54px; border-radius:14px; background:rgba(226,98,47,0.12); color:var(--coral); display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:18px;">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 style="font-size:1.2rem; color:var(--ink);">สร้างความประทับใจ</h3>
+                    <p style="color:var(--driftwood); font-size:0.9rem; margin-top:8px; line-height:1.65;">
+                        สร้างช่วงเวลาพิเศษในวันครบรอบ วันเกิด หรือวันพักผ่อนให้กลายเป็นความทรงจำอันมีค่า
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Timeline Section (เส้นทางความสำเร็จ) -->
+    <section class="wrap" style="padding:90px 24px;">
+        <div style="text-align:center; max-width:600px; margin:0 auto 48px;">
+            <span class="tag-badge"><i class="fa-solid fa-timeline"></i> ประวัติความเป็นมา</span>
+            <h2 class="reveal" style="font-size:2.1rem; margin-top:10px;">เส้นทางความสำเร็จตลอด 15 ปี</h2>
+        </div>
+
+        <div class="timeline reveal" style="max-width:800px; margin:0 auto;">
+            <div class="item timeline-dot">
+                <div class="yr">2010</div>
+                <h4 style="font-size:1.1rem; margin-top:4px; color:var(--ink);">เปิดตัว Grand Horizon Resort</h4>
+                <p style="margin-top:6px; color:var(--driftwood); font-size:0.92rem; line-height:1.65;">เปิดให้บริการระยะแรกด้วยห้องพัก 40 ห้อง พร้อมสระว่ายน้ำซีวิว และจุดชมพระอาทิตย์ตกดินอันเงียบสงบ</p>
+            </div>
+            <div class="item timeline-dot">
+                <div class="yr">2015</div>
+                <h4 style="font-size:1.1rem; margin-top:4px; color:var(--ink);">ขยายพูลวิลล่าและสปา</h4>
+                <p style="margin-top:6px; color:var(--driftwood); font-size:0.92rem; line-height:1.65;">เปิดโซน Ocean Pool Villa และ Horizon Wellness Spa พร้อมยกระดับมาตรฐานห้องอาหารเป็น Beachfront Fine Dining</p>
+            </div>
+            <div class="item timeline-dot">
+                <div class="yr">2019</div>
+                <h4 style="font-size:1.1rem; margin-top:4px; color:var(--ink);">คว้ารางวัลรีสอร์ทยอดเยี่ยม</h4>
+                <p style="margin-top:6px; color:var(--driftwood); font-size:0.92rem; line-height:1.65;">ได้รับรางวัล Best Beachfront Boutique Resort จากสถาบันการท่องเที่ยวระดับประเทศ</p>
+            </div>
+            <div class="item timeline-dot">
+                <div class="yr">2023</div>
+                <h4 style="font-size:1.1rem; margin-top:4px; color:var(--ink);">Grand Renovation & Smart Resort</h4>
+                <p style="margin-top:6px; color:var(--driftwood); font-size:0.92rem; line-height:1.65;">ปรับปรุงการตกแต่งใหม่ทั้งหมด ติดตั้งเทคโนโลยี Smart Room และระบบประหยัดพลังงานเพื่อสิ่งแวดล้อม</p>
+            </div>
+            <div class="item timeline-dot">
+                <div class="yr">2026</div>
+                <h4 style="font-size:1.1rem; margin-top:4px; color:var(--ink);">ก้าวสู่ปีที่ 16 อย่างยั่งยืน</h4>
+                <p style="margin-top:6px; color:var(--driftwood); font-size:0.92rem; line-height:1.65;">มุ่งหน้าสู่ Green Hotel เต็มรูปแบบพร้อมรองรับแขกผู้เข้าพักจากทั่วโลกด้วยบริการที่เป็นเลิศ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Quote Banner from General Manager -->
+    <section style="background:linear-gradient(rgba(14,36,48,0.85), rgba(14,36,48,0.85)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80') center/cover fixed; padding:90px 24px; color:#fff; text-align:center;">
+        <div class="wrap-narrow reveal">
+            <i class="fa-solid fa-quote-left" style="font-size:3rem; color:var(--coral); opacity:0.8;"></i>
+            <blockquote style="font-size:clamp(1.2rem, 2.5vw, 1.6rem); font-weight:300; line-height:1.7; margin-top:20px; font-style:italic;">
+                "ความสุขของแขกที่ได้รับการดูแลอย่างจริงใจ คือรางวัลและความสำเร็จที่ยิ่งใหญ่ที่สุดของพวกเราทุกคนที่ Grand Horizon Resort"
+            </blockquote>
+            <div style="margin-top:28px;">
+                <h4 style="font-size:1.1rem; color:#fff; font-weight:700;">คุณวรรณา สุขใจ</h4>
+                <p style="font-size:0.88rem; color:rgba(245,239,227,0.75); margin-top:4px;">ผู้จัดการทั่วไป (General Manager)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Team Section (ทีมงานผู้บริหาร) -->
+    <section class="wrap" style="padding:90px 24px;">
+        <div style="text-align:center; max-width:600px; margin:0 auto 52px;">
+            <span class="tag-badge"><i class="fa-solid fa-user-tie"></i> ทีมงานของเรา</span>
+            <h2 class="reveal" style="font-size:2.1rem; margin-top:10px;">ผู้อยู่เบื้องหลังความประทับใจ</h2>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:32px;">
+            <div class="card card-pad lift-card reveal" style="text-align:center; background:#fff; border-radius:16px;">
+                <div class="img-zoom-container" style="width:140px; height:140px; border-radius:50%; margin:0 auto; border:4px solid var(--sand);">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" style="width:100%; height:100%; object-fit:cover;" alt="GM">
+                </div>
+                <h4 style="font-size:1.2rem; margin-top:20px; color:var(--ink);">คุณวรรณา สุขใจ</h4>
+                <p style="color:var(--coral); font-size:0.88rem; font-weight:600; margin-top:2px;">ผู้จัดการทั่วไป (General Manager)</p>
+                <p style="color:var(--driftwood); font-size:0.85rem; margin-top:10px; line-height:1.6;">ประสบการณ์บริหารโรงแรมห้าดาวกว่า 18 ปี ใส่ใจในทุกมาตรฐานการบริการ</p>
+            </div>
+
+            <div class="card card-pad lift-card reveal" style="text-align:center; background:#fff; border-radius:16px;">
+                <div class="img-zoom-container" style="width:140px; height:140px; border-radius:50%; margin:0 auto; border:4px solid var(--sand);">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=400&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Executive Chef">
+                </div>
+                <h4 style="font-size:1.2rem; margin-top:20px; color:var(--ink);">คุณอนันต์ ทองดี</h4>
+                <p style="color:var(--coral); font-size:0.88rem; font-weight:600; margin-top:2px;">หัวหน้าเชฟประจำรีสอร์ท (Executive Chef)</p>
+                <p style="color:var(--driftwood); font-size:0.85rem; margin-top:10px; line-height:1.6;">เชฟผู้เชี่ยวชาญอาหารไทยซีฟู้ดสไตล์ฟิวชั่น รังสรรค์ความอร่อยสดใหม่ทุกวัน</p>
+            </div>
+
+            <div class="card card-pad lift-card reveal" style="text-align:center; background:#fff; border-radius:16px;">
+                <div class="img-zoom-container" style="width:140px; height:140px; border-radius:50%; margin:0 auto; border:4px solid var(--sand);">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Spa Manager">
+                </div>
+                <h4 style="font-size:1.2rem; margin-top:20px; color:var(--ink);">คุณศศิธร แก้วมณี</h4>
+                <p style="color:var(--coral); font-size:0.88rem; font-weight:600; margin-top:2px;">ผู้จัดการฝ่ายสปาและเวลเนส</p>
+                <p style="color:var(--driftwood); font-size:0.85rem; margin-top:10px; line-height:1.6;">ผู้ออกแบบคอร์สอโรมาเทอราพีและทรีตเมนต์เพื่อความผ่อนคลายระดับลึก</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Green Sustainability Initiative -->
+    <section class="wrap" style="padding:0 24px 90px;">
+        <div class="card card-pad reveal" style="background:linear-gradient(135deg, #1B6E6A 0%, #0E2430 100%); color:#fff; border-radius:20px; padding:48px 36px;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:40px; align-items:center;">
+                <div>
+                    <span class="tag-badge" style="background:rgba(255,255,255,0.15); color:#fff;"><i class="fa-solid fa-seedling"></i> ความยั่งยืน</span>
+                    <h2 style="font-size:2rem; margin-top:12px; color:#fff;">Green Horizon: เพื่อสิ่งแวดล้อมที่ยั่งยืน</h2>
+                    <p style="color:rgba(245,239,227,0.88); line-height:1.8; margin-top:14px; font-size:0.95rem;">
+                        เราตระหนักถึงความสำคัญของสิ่งแวดล้อมชายหาดพัทยา จึงดำเนินมาตรการรีสอร์ทสีเขียวเพื่อลดผลกระทบต่อธรรมชาติดังนี้:
+                    </p>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <i class="fa-solid fa-circle-check" style="color:#2ECC71; font-size:1.2rem;"></i>
+                            <span style="font-size:0.88rem; color:rgba(255,255,255,0.9);">ใช้ระบบพลังงานโซลาร์เซลล์</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <i class="fa-solid fa-circle-check" style="color:#2ECC71; font-size:1.2rem;"></i>
+                            <span style="font-size:0.88rem; color:rgba(255,255,255,0.9);">งดใช้ขวดพลาสติกแบบครั้งเดียว</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <i class="fa-solid fa-circle-check" style="color:#2ECC71; font-size:1.2rem;"></i>
+                            <span style="font-size:0.88rem; color:rgba(255,255,255,0.9);">ระบบรีไซเคิลน้ำบำบัด 100%</span>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <i class="fa-solid fa-circle-check" style="color:#2ECC71; font-size:1.2rem;"></i>
+                            <span style="font-size:0.88rem; color:rgba(255,255,255,0.9);">ใช้วัตถุดิบสดจากชุมชนท้องถิ่น</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-zoom-container" style="border-radius:14px;">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" style="width:100%; height:300px; object-fit:cover;" alt="Eco Friendly Resort">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Awards Showcase -->
+    <section class="wrap" style="padding:0 24px 90px; text-align:center;">
+        <span class="tag-badge"><i class="fa-solid fa-trophy"></i> ความภาคภูมิใจ</span>
+        <h2 class="reveal" style="font-size:1.8rem; margin-top:10px; margin-bottom:28px;">รางวัลและเกียรติยศที่ได้รับ</h2>
+        
+        <div class="reveal" style="display:flex; justify-content:center; flex-wrap:wrap; gap:16px;">
+            <div style="background:#fff; border:1px solid var(--line); padding:14px 28px; border-radius:50px; font-weight:600; font-size:0.92rem; color:var(--ink); box-shadow:0 4px 12px rgba(0,0,0,0.03);">
+                🏆 Travel + Leisure Choice 2025
+            </div>
+            <div style="background:#fff; border:1px solid var(--line); padding:14px 28px; border-radius:50px; font-weight:600; font-size:0.92rem; color:var(--ink); box-shadow:0 4px 12px rgba(0,0,0,0.03);">
+                ⭐ TripAdvisor Excellence Winner
+            </div>
+            <div style="background:#fff; border:1px solid var(--line); padding:14px 28px; border-radius:50px; font-weight:600; font-size:0.92rem; color:var(--ink); box-shadow:0 4px 12px rgba(0,0,0,0.03);">
+                🌿 Thailand Green Hotel Standard
+            </div>
+            <div style="background:#fff; border:1px solid var(--line); padding:14px 28px; border-radius:50px; font-weight:600; font-size:0.92rem; color:var(--ink); box-shadow:0 4px 12px rgba(0,0,0,0.03);">
+                💎 Condé Nast Traveler Top Beach Resort
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: Call to Action -->
+    <section style="background:var(--ink, #0E2430); color:#fff; padding:70px 24px; text-align:center; position:relative;">
+        <div class="wrap-narrow reveal">
+            <h2 style="font-size:2.2rem; color:#fff; font-weight:700;">สัมผัสวันพักผ่อนสุดพิเศษด้วยตัวคุณเอง</h2>
+            <p style="color:rgba(245,239,227,0.85); margin-top:14px; font-size:1.02rem; line-height:1.7;">
+                จองห้องพักโดยตรงผ่านเว็บไซต์เพื่อรับการการันตีราคาดีที่สุด พร้อมสิทธิพิเศษอาหารเช้าฟรีและ Welcome Drink
+            </p>
+            <div style="margin-top:32px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                <a href="rooms.html" class="btn btn-coral" style="padding:14px 36px; border-radius:30px;"><i class="fa-solid fa-calendar-days"></i> ตรวจสอบห้องพักและจองเลย</a>
+                <a href="contact.html" class="btn" style="padding:14px 36px; border-radius:30px; background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.25);"><i class="fa-solid fa-envelope"></i> ติดต่อเรา</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+                <p style="max-width:280px;margin-top:14px;font-size:0.88rem;line-height:1.6;">รีสอร์ทริมหาดที่ตั้งอยู่บนทำเลที่ดีที่สุดของพัทยา มอบวันพักผ่อนที่จำง่าย ลืมยาก</p>
+                <div style="display:flex;gap:12px;margin-top:18px;">
+                    <a href="#" aria-label="Facebook" style="width:36px;height:36px;border-radius:50%;background:rgba(245,239,227,0.08);display:flex;align-items:center;justify-content:center;margin:0;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;background:rgba(245,239,227,0.08);display:flex;align-items:center;justify-content:center;margin:0;"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Line" style="width:36px;height:36px;border-radius:50%;background:rgba(245,239,227,0.08);display:flex;align-items:center;justify-content:center;margin:0;"><i class="fa-brands fa-line"></i></a>
+                </div>
+            </div>
+            <div class="cols">
+                <div>
+                    <h4>สำรวจ</h4>
+                    <a href="rooms.html">ห้องพักทั้งหมด</a>
+                    <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+                    <a href="gallery.html">แกลเลอรี</a>
+                    <a href="offers.html">โปรโมชั่น</a>
+                </div>
+                <div>
+                    <h4>ช่วยเหลือ</h4>
+                    <a href="faq.html">คำถามที่พบบ่อย</a>
+                    <a href="reviews.html">รีวิวจากผู้เข้าพัก</a>
+                    <a href="contact.html">ติดต่อเรา</a>
+                    <a href="admin.html">ระบบหลังบ้าน</a>
+                </div>
+                <div>
+                    <h4>บริษัท</h4>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Grand Horizon Resort, Pattaya. สงวนลิขสิทธิ์ทุกประการ</div>
+    </footer>
+
+    <script src="main.js"></script>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

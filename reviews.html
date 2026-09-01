@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รีวิวจากผู้เข้าพัก - Grand Horizon Resort</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+   <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+            <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+    <style>@media (max-width:900px){#desktopAdminBtn{display:none;}}</style>
+
+    <!-- Section 1: ส่วนวิดีโอ Banner ด้านบน -->
+    <section class="hero-video-section" style="position: relative; height: 60vh; min-height: 400px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <!-- วิดีโอพื้นหลัง (เปลี่ยนชื่อไฟล์ video.mp4 ตามไฟล์ของคุณ) -->
+        <video autoplay loop muted playsinline style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 1; object-fit: cover;">
+            <source src="02.mp4" type="video/mp4">
+            <source src="02.webm" type="video/webm">
+            เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+        </video>
+
+        <!-- Overlay สีเข้มโปร่งแสง ช่วยบังวิดีโอเพื่อให้ตัวอักษรคมชัดยิ่งขึ้น -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 24, 0.65); z-index: 2;"></div>
+
+        <!-- เนื้อหาบนวิดีโอ -->
+        <div style="position: relative; z-index: 3; text-align: center; padding: 0 20px;">
+            <p class="eyebrow" style="color: #FFB703; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">
+                Grand Horizon Experience
+            </p>
+            <!-- ปรับหัวข้อเป็นสีทองสว่าง (Gold) ให้อ่านชัดเจน -->
+            <h1 style="font-size: 2.8rem; font-weight: 700; color: #D4AF37; text-shadow: 0 2px 10px rgba(0,0,0,0.8); margin: 0 0 12px 0;">
+                สัมผัสความหรูหราริมชายหาด
+            </h1>
+            <p style="color: #E0E0E0; font-size: 1.1rem; max-width: 600px; margin: 0 auto; text-shadow: 0 1px 5px rgba(0,0,0,0.8);">
+                ชมบรรยากาศความงดงามและบริการระดับ 6 ดาวที่คุณจะได้สัมผัส
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 2: ส่วนแสดงหัวข้อรีวิว (ปรับแก้สีตัวหนังสือแล้ว) -->
+    <section style="background:var(--ink, #0A1918); color:#F5EFE3; padding:50px 24px 30px; text-align:center;">
+        <p class="eyebrow" style="color:#FFB703; font-weight: 600; font-size: 1rem;">เสียงจากผู้เข้าพักจริง</p>
+        
+        <!-- เปลี่ยนจากสีขาวเป็นสีทองหรูหรา (#D4AF37) -->
+        <h2 style="font-size:2.3rem; margin-top:8px; color:#D4AF37; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+            รีวิวจากผู้เข้าพัก
+        </h2>
+        
+        <!-- ปรับสีคะแนนและจำนวนรีวิวให้สว่างอ่านชัด -->
+        <p class="mono" style="margin-top:10px; color:#FFD700; font-size:1.4rem; font-weight: bold;">
+            4.8 / 5 <span style="color:#E0E0E0; font-size:0.95rem; font-weight: normal;">(จาก 2,140 รีวิว)</span>
+        </p>
+    </section>
+
+  <div class="horizon" aria-hidden="true">
+    <svg viewBox="0 0 1180 56" preserveAspectRatio="none">
+      <line x1="0" y1="28" x2="1180" y2="28" stroke="#E2622F" stroke-width="1" opacity="0.35"/>
+    </svg>
+    <span class="glow"></span>
+  </div>
+
+    <!-- Section 3: รายการรีวิว -->
+    <section class="wrap" style="padding:56px 24px 80px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+            
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★★</div>
+                <p class="body">การบริการเยี่ยมมาก ห้องพักสะอาด วิวทะเลสวยจนไม่อยากกลับบ้านเลยค่ะ ทีมงานดูแลดีตั้งแต่เช็คอินจนเช็คเอาท์</p>
+                <div class="who">
+                    <div class="avatar">A</div>
+                    <div><div class="name">Anna W.</div><div class="loc">เยอรมนี</div></div>
+                </div>
+            </div>
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★★</div>
+                <p class="body">จองผ่านเว็บง่ายมาก ห้อง Pool Villa คุ้มค่าสุดๆ อาหารเช้าอร่อย พนักงานยิ้มแย้มเป็นกันเองตลอด</p>
+                <div class="who">
+                    <div class="avatar">K</div>
+                    <div><div class="name">คุณกิตติ ส.</div><div class="loc">กรุงเทพฯ</div></div>
+                </div>
+            </div>
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★★</div>
+                <p class="body">Best beachfront stay in Pattaya. The spa treatment was outstanding and the staff remembered our names all week.</p>
+                <div class="who">
+                    <div class="avatar">J</div>
+                    <div><div class="name">James T.</div><div class="loc">สิงคโปร์</div></div>
+                </div>
+            </div>
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★☆</div>
+                <p class="body">พาครอบครัวมาพัก เด็กๆ ชอบสระว่ายน้ำและสนามเด็กเล่นมาก จะกลับมาพักอีกแน่นอนค่ะ</p>
+                <div class="who">
+                    <div class="avatar">N</div>
+                    <div><div class="name">คุณนภัส พ.</div><div class="loc">เชียงใหม่</div></div>
+                </div>
+            </div>
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★★</div>
+                <p class="body">Amazing sunset views from the Ocean Suite balcony. Breakfast buffet had great variety. Will definitely return!</p>
+                <div class="who">
+                    <div class="avatar">S</div>
+                    <div><div class="name">Sophie L.</div><div class="loc">ฝรั่งเศส</div></div>
+                </div>
+            </div>
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★★</div>
+                <p class="body">พนักงานต้อนรับดูแลดีมากค่ะ ห้องสะอาด เตียงนอนสบาย ราคาคุ้มค่าสุดๆ</p>
+                <div class="who">
+                    <div class="avatar">P</div>
+                    <div><div class="name">คุณปิยะ ว.</div><div class="loc">ระยอง</div></div>
+                </div>
+            </div>
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★☆</div>
+                <p class="body">Great location right on the beach. The pool villa was worth every baht. Staff went above and beyond.</p>
+                <div class="who">
+                    <div class="avatar">M</div>
+                    <div><div class="name">Michael B.</div><div class="loc">ออสเตรเลีย</div></div>
+                </div>
+            </div>
+            <div class="testi reveal">
+                <span class="quote-mark">"</span>
+                <div class="stars">★★★★★</div>
+                <p class="body">ทำเลดีมาก เดินไปตลาดกลางคืนได้สะดวก ห้องอาหารเช้าเยอะและอร่อย</p>
+                <div class="who">
+                    <div class="avatar">T</div>
+                    <div><div class="name">คุณธีระ ก.</div><div class="loc">สงขลา</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+                <p style="max-width:280px;margin-top:14px;font-size:0.88rem;line-height:1.6;">รีสอร์ทริมหาดที่ตั้งอยู่บนทำเลที่ดีที่สุดของพัทยา มอบวันพักผ่อนที่จำง่าย ลืมยาก</p>
+                <div style="display:flex;gap:12px;margin-top:18px;">
+                    <a href="#" aria-label="Facebook" style="width:34px;height:34px;border-radius:50%;background:rgba(245,239,227,0.08);display:flex;align-items:center;justify-content:center;margin:0;">f</a>
+                    <a href="#" aria-label="Instagram" style="width:34px;height:34px;border-radius:50%;background:rgba(245,239,227,0.08);display:flex;align-items:center;justify-content:center;margin:0;">ig</a>
+                    <a href="#" aria-label="Line" style="width:34px;height:34px;border-radius:50%;background:rgba(245,239,227,0.08);display:flex;align-items:center;justify-content:center;margin:0;">L</a>
+                </div>
+            </div>
+            <div class="cols">
+                <div>
+                    <h4>สำรวจ</h4>
+                    <a href="rooms.html">ห้องพักทั้งหมด</a>
+                    <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+                    <a href="gallery.html">แกลเลอรี</a>
+                    <a href="offers.html">โปรโมชั่น</a>
+                </div>
+                <div>
+                    <h4>ช่วยเหลือ</h4>
+                    <a href="faq.html">คำถามที่พบบ่อย</a>
+                    <a href="reviews.html">รีวิวจากผู้เข้าพัก</a>
+                    <a href="contact.html">ติดต่อเรา</a>
+                    <a href="admin.html">ระบบหลังบ้าน</a>
+                </div>
+                <div>
+                    <h4>บริษัท</h4>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Grand Horizon Resort, Pattaya. สงวนลิขสิทธิ์ทุกประการ</div>
+    </footer>
+    <script src="main.js"></script>
+
+    <!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                        document.removeEventListener('scroll', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                    document.addEventListener('scroll', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

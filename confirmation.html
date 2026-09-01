@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การจองสำเร็จ - Grand Horizon Resort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+            <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+    <style>@media (max-width:900px){#desktopAdminBtn{display:none;}}</style>
+
+    <section class="wrap-narrow" style="padding:56px 24px;">
+        <div class="stepper">
+            <div class="step done"><span class="num">✓</span><span>ข้อมูลผู้เข้าพัก</span></div>
+            <span class="bar"></span>
+            <div class="step done"><span class="num">✓</span><span>ชำระเงิน</span></div>
+            <span class="bar"></span>
+            <div class="step current"><span class="num">3</span><span>เสร็จสิ้น</span></div>
+        </div>
+        
+        <div class="card card-pad reveal in" style="text-align:center;margin-top:18px;">
+            <div style="width:64px;height:64px;border-radius:50%;background:rgba(27,110,106,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.8rem;">🌅</div>
+            <p class="eyebrow">การจองสำเร็จ</p>
+            <h1 style="font-size:1.9rem;margin-top:10px;">ขอบคุณที่เลือก Grand Horizon</h1>
+            <p style="color:var(--driftwood);margin-top:10px;font-size:0.92rem;">เราได้ส่ง Booking Voucher ไปยังอีเมลของคุณเรียบร้อยแล้ว</p>
+
+            <!-- แสดงข้อมูลไดนามิกที่ส่งมาจากหน้าชำระเงิน -->
+            <div style="background:var(--sand);border-radius:10px;padding:20px;margin-top:26px;text-align:left;font-size:0.9rem;display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;justify-content:space-between;">
+                    <span style="color:var(--driftwood);">Booking ID</span>
+                    <span class="mono" id="booking-id-display">#GH-2026-9921</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                    <span style="color:var(--driftwood);">ประเภทห้อง</span>
+                    <span id="room-name-display">Deluxe Garden View</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                    <span style="color:var(--driftwood);">เช็คอิน / เช็คเอาท์</span>
+                    <span>ตามวันที่เลือก</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                    <span style="color:var(--driftwood);">ยอดชำระ</span>
+                    <span class="mono" id="total-price-display" style="color:var(--coral); font-weight: bold;">฿0</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                    <span style="color:var(--driftwood);">สถานะ</span>
+                    <span class="pill pill-teal">ชำระเงินแล้ว</span>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-top:26px;">
+                <a href="index.html" class="btn btn-dark btn-block">กลับสู่หน้าแรก</a>
+                <a href="rooms.html" class="btn btn-outline btn-block">จองห้องเพิ่ม</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+                <p style="max-width:280px;margin-top:14px;font-size:0.88rem;line-height:1.6;">รีสอร์ทริมหาดที่ตั้งอยู่บนทำเลที่ดีที่สุดของพัทยา มอบวันพักผ่อนที่จำง่าย ลืมยาก</p>
+            </div>
+            <div class="cols">
+                <div>
+                    <h4>สำรวจ</h4>
+                    <a href="rooms.html">ห้องพักทั้งหมด</a>
+                    <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Grand Horizon Resort, Pattaya. สงวนลิขสิทธิ์ทุกประการ</div>
+    </footer>
+
+    <!-- Script อ่านข้อมูลจาก URL เพื่อแสดงผลการจอง -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // อ่านค่า room และ price ที่ถูกส่งมาจาก Form
+            const roomName = urlParams.get('room') || 'Deluxe Garden View';
+            const price = urlParams.get('price') || '2750';
+
+            // สุ่มเลข Booking ID เก๋ๆ
+            const randomID = '#GH-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+            // แสดงผลลงใน HTML
+            document.getElementById('booking-id-display').textContent = randomID;
+            document.getElementById('room-name-display').textContent = roomName;
+            document.getElementById('total-price-display').textContent = '฿' + Number(price).toLocaleString();
+        });
+    </script>
+
+    <!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

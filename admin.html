@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบหลังบ้าน - Grand Horizon Resort Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+        @media (max-width: 900px) { .admin-layout { grid-template-columns: 1fr; } }
+        .sidebar {
+            background: var(--ink, #0E2430);
+            color: #fff;
+            padding: 24px;
+        }
+        .sidebar a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            padding: 12px 0;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar a:hover, .sidebar a.active { color: var(--coral); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .data-table th, .data-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+        .data-table th { background: var(--sand); color: var(--ink); }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .status-confirmed { background: #E8F8F5; color: #27AE60; }
+        .status-pending { background: #FEF9E7; color: #F39C12; }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <a href="index.html" class="brand" style="margin-bottom: 24px;"><span class="dot"></span>G-HORIZON</a>
+            <a href="#" class="active"><i class="fa-solid fa-chart-line"></i> ภาพรวมระบบ</a>
+            <a href="#"><i class="fa-solid fa-calendar-check"></i> รายการจองห้องพัก</a>
+            <a href="#"><i class="fa-solid fa-bed"></i> สถานะห้องพัก</a>
+            <a href="#"><i class="fa-solid fa-users"></i> ข้อมูลลูกค้า</a>
+            <a href="index.html" style="margin-top: 40px; color: #E74C3C;"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a>
+        </div>
+
+        <!-- Main Content Area -->
+        <div style="padding: 40px; background: #F8F9FA;">
+            <h1 style="font-size: 1.8rem; color: var(--ink);">ภาพรวมการดำเนินงาน (Admin Dashboard)</h1>
+            
+            <!-- Key Metric Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 28px 0;">
+                <div class="card card-pad" style="background:#fff; border-left:4px solid var(--teal);">
+                    <span style="color:var(--driftwood); font-size:0.85rem;">รายได้รวมเดือนนี้</span>
+                    <h2 style="color:var(--ink); margin-top:6px;">฿1,245,000</h2>
+                </div>
+                <div class="card card-pad" style="background:#fff; border-left:4px solid var(--coral);">
+                    <span style="color:var(--driftwood); font-size:0.85rem;">อัตราการเข้าพัก (Occupancy)</span>
+                    <h2 style="color:var(--ink); margin-top:6px;">88.5%</h2>
+                </div>
+                <div class="card card-pad" style="background:#fff; border-left:4px solid #F39C12;">
+                    <span style="color:var(--driftwood); font-size:0.85rem;">รายการจองใหม่วันนี้</span>
+                    <h2 style="color:var(--ink); margin-top:6px;">14 รายการ</h2>
+                </div>
+            </div>
+
+            <!-- Recent Bookings Table -->
+            <h3 style="margin-bottom: 16px; color: var(--ink);">รายการจองล่าสุด</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>รหัสจอง</th>
+                        <th>ชื่อลูกค้า</th>
+                        <th>ประเภทห้อง</th>
+                        <th>เช็คอิน - เช็คเอาท์</th>
+                        <th>ยอดรวม</th>
+                        <th>สถานะ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#GH-8801</td>
+                        <td>คุณสมชาย ใจดี</td>
+                        <td>Deluxe Sea View</td>
+                        <td>25 ก.ค. 2026 - 27 ก.ค. 2026</td>
+                        <td>฿7,700</td>
+                        <td><span class="status-badge status-confirmed">ชำระเงินแล้ว</span></td>
+                    </tr>
+                    <tr>
+                        <td>#GH-8802</td>
+                        <td>Mr. John Doe</td>
+                        <td>Beachfront Pool Villa</td>
+                        <td>28 ก.ค. 2026 - 30 ก.ค. 2026</td>
+                        <td>฿21,560</td>
+                        <td><span class="status-badge status-confirmed">ชำระเงินแล้ว</span></td>
+                    </tr>
+                    <tr>
+                        <td>#GH-8803</td>
+                        <td>คุณนภา สุขสันต์</td>
+                        <td>Grand Horizon Suite</td>
+                        <td>01 ส.ค. 2026 - 02 ส.ค. 2026</td>
+                        <td>฿6,050</td>
+                        <td><span class="status-badge status-pending">รอชำระเงิน</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

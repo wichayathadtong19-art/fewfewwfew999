@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แกลเลอรี - Grand Horizon Resort & Spa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===================================================
+           LUXURY ULTRA-PREMIUM SYSTEM & CONTRAST FIX
+           =================================================== */
+        :root {
+            --primary-dark: #0A1918;      /* Deep Emerald Charcoal */
+            --accent-gold: #B8860B;       /* Dark Champagne Gold (คมชัดอ่านง่าย) */
+            --gold-bright: #D4AF37;
+            --cream-bg: #FAF8F5;          /* Warm Cream Background */
+            --card-bg: #FFFFFF;
+            --text-dark: #0E2430;         /* เข้ม ชัดเจน */
+            --text-muted: #4A5568;
+            --line-gold: rgba(184, 134, 11, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* --- Header Navigation (Glassmorphism) --- */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 25, 24, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line-gold);
+            padding: 16px 0;
+        }
+
+        .site-header .bar {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--gold-bright);
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold-bright);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold-bright);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold-bright);
+            border-bottom: 1px solid var(--gold-bright);
+            padding-bottom: 4px;
+        }
+
+        /* --- GALLERY HEADER (แก้ปัญหาข้อความจางและพื้นที่กลืน) --- */
+        .gallery-header-section {
+            text-align: center;
+            padding: 50px 20px 30px;
+            background: linear-gradient(180deg, rgba(184, 134, 11, 0.05) 0%, rgba(250, 248, 245, 0) 100%);
+            border-bottom: 1px solid rgba(184, 134, 11, 0.12);
+        }
+
+        .gallery-subtitle {
+            color: var(--accent-gold) !important; /* สีทองเข้ม คมชัด 100% */
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .gallery-title {
+            font-family: 'Cormorant Garamond', 'Prompt', serif;
+            color: var(--primary-dark) !important; /* สีเข้มชัดเจน ไม่จาง */
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-desc {
+            color: var(--text-muted) !important;
+            font-size: 0.95rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- MAIN CONTENT & CATEGORY SECTION --- */
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .category-title-wrap {
+            margin-bottom: 30px;
+            border-left: 4px solid var(--gold-bright);
+            padding-left: 16px;
+        }
+
+        .category-subtitle {
+            color: var(--accent-gold) !important;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+        }
+
+        .category-main-title {
+            font-family: 'Cormorant Garamond', 'Prompt', serif;
+            color: var(--primary-dark) !important;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* --- GALLERY GRID & CARDS (รูปภาพเด้งมีมิติ คมชัด) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 32px;
+        }
+
+        .gallery-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(184, 134, 11, 0.25); /* ขอบสีกระจายตัวชัดเจน */
+            box-shadow: 0 10px 25px rgba(10, 25, 24, 0.08); /* เงาช่วยให้รูปภาพลอยออกมา */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(10, 25, 24, 0.16);
+            border-color: var(--gold-bright);
+        }
+
+        .img-container {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-card:hover .img-container img {
+            transform: scale(1.06);
+        }
+
+        .img-caption {
+            padding: 18px 24px;
+            background: #FFFFFF;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .img-caption h4 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .img-caption span {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+	    <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+
+    <!-- Header Section (แก้จุดข้อความมองไม่เห็นแล้ว) -->
+    <section class="gallery-header-section">
+        <span class="gallery-subtitle">ภาพบรรยากาศจริง</span>
+        <h1 class="gallery-title">แกลเลอรีของเรา</h1>
+        <p class="gallery-desc">รวมภาพความประทับใจและบรรยากาศอันงดงามจากทุกมุมของ Grand Horizon Resort</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        
+        <!-- Category Title -->
+        <div class="category-title-wrap">
+            <span class="category-subtitle">หมวดหมู่ภาพถ่าย</span>
+            <h2 class="category-main-title">ห้องพักและวิลล่า</h2>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            
+            <!-- Card 1 -->
+            <div class="gallery-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Deluxe Sanctuary Room">
+                </div>
+                <div class="img-caption">
+                    <h4>Deluxe Sanctuary Room</h4>
+                    <span>วิวสวนเขตร้อน</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="gallery-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Ocean Horizon Suite">
+                </div>
+                <div class="img-caption">
+                    <h4>Ocean Horizon Suite</h4>
+                    <span>วิวทะเลพาโนรามา</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="gallery-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80" alt="Royal Beachfront Villa">
+                </div>
+                <div class="img-caption">
+                    <h4>Royal Beachfront Villa</h4>
+                    <span>ติดชายหาดส่วนตัว</span>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

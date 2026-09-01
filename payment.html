@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ชำระเงิน - Grand Horizon Resort</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .chip { cursor: pointer; padding: 8px 16px; border-radius: 20px; border: 1px solid var(--line-gold); background: #fff; transition: 0.3s; }
+        .chip.active { background: var(--accent-gold); color: #fff; border-color: var(--accent-gold); }
+        .payment-panel { display: none; margin-top: 20px; }
+        .payment-panel.active { display: block; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="bar">
+            <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+            <nav class="nav-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="rooms.html">ห้องพัก</a>
+                <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+                <a href="dining.html">ห้องอาหาร</a>
+                <a href="creator.html" class="">ผู้จัดทำ</a>
+                <a href="gallery.html">แกลเลอรี</a>
+                <a href="reviews.html">รีวิว</a>
+                <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+                <a href="admin.html">หลังบ้าน</a>
+	        <a href="faq.html">ปัญหาที่พบบ่อย</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="wrap-narrow" style="padding:56px 24px; max-width: 600px; margin: 0 auto;">
+        <div class="stepper">
+            <div class="step done"><span class="num">✓</span><span>ข้อมูลผู้เข้าพัก</span></div>
+            <span class="bar"></span>
+            <div class="step current"><span class="num">2</span><span>ชำระเงิน</span></div>
+            <span class="bar"></span>
+            <div class="step"><span class="num">3</span><span>เสร็จสิ้น</span></div>
+        </div>
+
+        <h1 style="font-size:1.9rem;margin-top:18px;text-align:center;">ชำระเงินอย่างปลอดภัย</h1>
+        
+        <div class="card card-pad" style="margin-top:28px;text-align:center; background:#fff; padding:24px; border-radius:12px; border: 1px solid var(--line-gold);">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(27,110,106,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                <span style="color:var(--teal);font-size:1.5rem;">🔒</span>
+            </div>
+            
+            <p style="color:var(--text-muted);font-size:0.9rem;">รายการ: <strong id="room-name-display">ห้องพักราคาประหยัด</strong></p>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-top:4px;">ยอดชำระสุทธิ</p>
+            <!-- แสดงราคาแบบไดนามิก ดึงค่าจริงที่เลือก -->
+            <p class="mono price-num" id="total-price-display" style="font-size:2.3rem;color:var(--accent-gold);margin-top:6px;">฿0</p>
+
+            <!-- ปุ่มเลือกวิธีชำระเงิน -->
+            <div class="chip-row" style="display:flex;justify-content:center;gap:10px;margin-top:18px;">
+                <button type="button" class="chip active" onclick="switchPayment('card', this)">บัตรเครดิต</button>
+                <button type="button" class="chip" onclick="switchPayment('promptpay', this)">พร้อมเพย์</button>
+                <button type="button" class="chip" onclick="switchPayment('bank', this)">โอนเงิน</button>
+            </div>
+
+            <form action="confirmation.html" method="get" style="text-align:left;margin-top:24px;">
+                <input type="hidden" name="price" id="input-price">
+                <input type="hidden" name="room" id="input-room">
+
+                <!-- 1. บัตรเครดิต -->
+                <div id="panel-card" class="payment-panel active">
+                    <div style="display:flex;flex-direction:column;gap:14px;">
+                        <div>
+                            <label class="field-label">ชื่อบนบัตร</label>
+                            <input type="text" style="width:100%;padding:10px;" placeholder="SOMCHAI JAIDEE" required>
+                        </div>
+                        <div>
+                            <label class="field-label">หมายเลขบัตร</label>
+                            <input type="text" style="width:100%;padding:10px;" placeholder="0000 0000 0000 0000" required>
+                        </div>
+                        <div style="display:flex;gap:14px;">
+                            <div style="flex:1;">
+                                <label class="field-label">วันหมดอายุ</label>
+                                <input type="text" style="width:100%;padding:10px;" placeholder="MM/YY" required>
+                            </div>
+                            <div style="flex:1;">
+                                <label class="field-label">CVV</label>
+                                <input type="password" style="width:100%;padding:10px;" placeholder="•••" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. พร้อมเพย์ -->
+                <div id="panel-promptpay" class="payment-panel" style="text-align:center;">
+                    <p style="font-size:0.9rem;color:var(--text-muted);">สแกน QR Code เพื่อชำระเงิน</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=GrandHorizonResort" alt="PromptPay QR" style="margin:16px 0; border:1px solid #ddd; padding:8px; border-radius:8px;">
+                    <p style="font-size:0.85rem;color:var(--text-muted);">ชื่อบัญชี: บจก. แกรนด์ โฮไรซอน รีสอร์ท</p>
+                </div>
+
+                <!-- 3. โอนผ่านธนาคาร -->
+                <div id="panel-bank" class="payment-panel" style="background:#f9f9f9;padding:16px;border-radius:8px;">
+                    <p style="font-weight:600;">ธนาคารกสิกรไทย (KBANK)</p>
+                    <p style="font-size:0.9rem;">เลขที่บัญชี: <strong class="mono">123-4-56789-0</strong></p>
+                    <p style="font-size:0.9rem;">ชื่อบัญชี: บจก. แกรนด์ โฮไรซอน รีสอร์ท</p>
+                </div>
+
+                <button type="submit" class="btn btn-gold btn-block" style="width:100%;margin-top:20px;padding:12px;cursor:pointer;">ยืนยันการชำระเงิน</button>
+                <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:8px;">🔒 ข้อมูลของคุณถูกเข้ารหัสอย่างปลอดภัย</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-bottom" style="text-align:center;padding:20px;">&copy; 2026 Grand Horizon Resort, Pattaya.</div>
+    </footer>
+
+    <!-- Script สำหรับอ่านราคาและเปลี่ยนหน้าจอชำระเงิน -->
+    <script>
+        // ดึงราคาจาก URL Parameter หรือ localStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // อ่านค่าจาก URL (ถ้าไม่มีให้ลองดึงจาก localStorage หรือตั้งค่าเริ่มต้น 300)
+            const roomName = urlParams.get('room') || localStorage.getItem('selectedRoom') || 'Standard Fan Room';
+            const price = urlParams.get('price') || localStorage.getItem('selectedPrice') || '300';
+
+            // แสดงผลบน UI
+            document.getElementById('room-name-display').textContent = roomName;
+            document.getElementById('total-price-display').textContent = '฿' + Number(price).toLocaleString();
+            
+            // ใส่ค่าเข้า Hidden Field เตรียมส่ง Form
+            document.getElementById('input-room').value = roomName;
+            document.getElementById('input-price').value = price;
+        });
+
+        // สลับแท็บวิธีชำระเงิน
+        function switchPayment(type, btn) {
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.payment-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('panel-' + type).classList.add('active');
+
+            // หากเป็นพร้อมเพย์หรือโอนเงิน ให้ปิดการบังคับกรอกข้อมูลบัตร
+            const cardInputs = document.querySelectorAll('#panel-card input');
+            cardInputs.forEach(input => input.required = (type === 'card'));
+        }
+    </script>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

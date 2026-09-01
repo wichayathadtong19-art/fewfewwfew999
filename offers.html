@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8"><title>โปรโมชั่น - Grand Horizon</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .promo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .promo-card {
+            background: #FFF; border-radius: 8px; overflow: hidden;
+            border: 1px solid rgba(184, 134, 11, 0.25); box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a> 
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+	    <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+
+    <section class="page-header">
+        <span class="page-subtitle">Exclusive Offers</span>
+        <h1 class="page-title">โปรโมชั่นและข้อเสนอพิเศษ</h1>
+        <p class="page-desc">รับสิทธิประโยชน์สูงสุดเมื่อสำรองห้องพักโดยตรงกับ Grand Horizon Resort</p>
+    </section>
+
+    <main class="wrap">
+        <div class="promo-grid">
+            <div class="promo-card">
+                <span class="page-subtitle">ส่วนลด 30%</span>
+                <h3 style="margin-bottom:10px;">Early Bird Getaway</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px;">จองห้องพักล่วงหน้า 30 วัน รับส่วนลดทันที 30% พร้อมอาหารเช้าฟรี</p>
+                <a href="#" class="btn-gold">รับสิทธิ์จอง</a>
+            </div>
+            <div class="promo-card">
+                <span class="page-subtitle">แพ็กเกจพิเศษ</span>
+                <h3 style="margin-bottom:10px;">Honeymoon Escape</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px;">สวีต 3 วัน 2 คืน ในพูลวิลล่า ฟรีสปาคู่รักและดินเนอร์ใต้แสงเทียน</p>
+                <a href="#" class="btn-gold">รับสิทธิ์จอง</a>
+            </div>
+        </div>
+    </main>
+
+	<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

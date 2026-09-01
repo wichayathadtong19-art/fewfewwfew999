@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สิ่งอำนวยความสะดวก - Grand Horizon Resort</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .facility-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: #FFF;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(184, 134, 11, 0.25);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 768px) {
+            .facility-section { grid-template-columns: 1fr; }
+        }
+        .facility-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .tag-badge {
+            background: rgba(184, 134, 11, 0.1);
+            color: var(--accent-gold);
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+    <div class="bar">
+        <a href="index.html" class="brand"><span class="dot"></span>GRAND HORIZON</a>
+        <nav class="nav-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="rooms.html">ห้องพัก</a>
+            <a href="facilities.html">สิ่งอำนวยความสะดวก</a>
+            <a href="dining.html">ห้องอาหาร</a>
+            <a href="creator.html" class="">ผู้จัดทำ</a>
+            <a href="gallery.html">แกลเลอรี</a>
+            <a href="reviews.html">รีวิว</a>
+            <a href="about.html" class="btn-gold">สำรวจและติดต่อเรา</a>
+            <a href="admin.html">หลังบ้าน</a>
+	    <a href="faq.html">ปัญหาที่พบบ่อย</a>
+        </nav>
+    </div>
+</header>
+
+    <section class="page-header">
+        <span class="page-subtitle">Facilities & Services</span>
+        <h1 class="page-title">สิ่งอำนวยความสะดวกและบริการระดับพรีเมียม</h1>
+        <p class="page-desc">ยกระดับช่วงเวลาแห่งการพักผ่อนด้วยบริการสปา ร้านอาหารระดับมิชลิน และกิจกรรมสุดพิเศษ</p>
+    </section>
+
+    <main class="wrap">
+
+        <!-- Dining Section -->
+        <div class="facility-section" id="dining">
+            <div>
+                <span class="tag-badge"><i class="fa-solid fa-utensils"></i> Fine Dining & Seafood</span>
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Michelin Dining Experience</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">
+                    สัมผัสรสชาติอันพิถีพิถันจากวัตถุดิบซีฟู้ดสดใหม่ส่งตรงจากทะเล รังสรรค์เมนูโดยเชฟระดับมิชลินสตาร์ บรรยากาศโรแมนติกพร้อมวิวพระอาทิตย์ตกริมชายหาด
+                </p>
+                <a href="index.html" class="btn-gold">จองโต๊ะอาหาร</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Michelin Dining" class="facility-img">
+        </div>
+
+        <!-- Spa Section -->
+        <div class="facility-section" id="spa">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" alt="Horizon Serenity Spa" class="facility-img">
+            <div>
+                <span class="tag-badge"><i class="fa-solid fa-spa"></i> Wellness & Spa Therapy</span>
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Horizon Serenity Spa</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">
+                    ปลดปล่อยความเมื่อยล้าและฟื้นฟูสมดุลของร่างกาย ด้วยทรีตเมนต์สปานวดสมุนไพรสด น้ำมันหอมระเหยสกัดธรรมชาติ และคอร์สอโรมาเธอราพีสูตรเฉพาะ
+                </p>
+                <a href="index.html" class="btn-gold">จองคอร์สสปา</a>
+            </div>
+        </div>
+
+    </main>
+
+<!-- Hidden Background Music Player -->
+    <audio id="bg-music" autoplay loop style="display: none;">
+        <!-- ใส่ Path หรือ URL ของไฟล์เพลงตรงนี้ -->
+        <source src="555.mp3" type="audio/mpeg">
+        <source src="555.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Script ปลดล็อก Autoplay สำหรับเบราว์เซอร์ยุคใหม่ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('bg-music');
+            
+            // พยายามสั่งเล่นเพลงทันที
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // หากเบราว์เซอร์บล็อกการเล่นอัตโนมัติ จะรอให้ผู้ใช้กดคลิกตรงไหนก็ได้ในหน้าเว็บ 1 ครั้งเพื่อเริ่มเล่นเพลงทันที
+                    const enableAudio = function() {
+                        music.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('keydown', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('keydown', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
+        });
+    </script>
+
+
+</body>
+</html>
